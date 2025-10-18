@@ -8,7 +8,6 @@ public class TileMover : MonoBehaviour
     public LayerMask obstacleLayer;
     public Vector2Int gridSize = new Vector2Int(10, 10);
     public float inputRepeatDelay = 0.15f;
-    public Vector3 gridOrigin = Vector3.zero;
 
     private bool isMoving = false;
     private Vector3 targetPosition;
@@ -22,23 +21,22 @@ public class TileMover : MonoBehaviour
 
     void Update()
     {
+        bool immediateMove = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) ||
+                             Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D);
+
+// Then in Update():
         if (!isMoving)
         {
             Vector3 inputDir = GetInputDirection();
 
             if (inputDir != Vector3.zero)
             {
-                if (inputDir != lastInputDirection)
+                inputTimer += Time.deltaTime;
+
+                if (immediateMove || inputTimer >= inputRepeatDelay)
                 {
                     inputTimer = 0f;
                     lastInputDirection = inputDir;
-                }
-
-                inputTimer += Time.deltaTime;
-
-                if (inputTimer >= inputRepeatDelay)
-                {
-                    inputTimer = 0f;
 
                     Vector3 destination = targetPosition + inputDir * tileSize;
 
@@ -54,6 +52,7 @@ public class TileMover : MonoBehaviour
                 lastInputDirection = Vector3.zero;
             }
         }
+
     }
 
     Vector3 GetInputDirection()
@@ -82,17 +81,18 @@ public class TileMover : MonoBehaviour
 
     bool IsWithinBounds(Vector3 position)
     {
-        Vector3 localPos = position - gridOrigin;
-        int x = Mathf.RoundToInt(localPos.x / tileSize);
-        int z = Mathf.RoundToInt(localPos.z / tileSize);
+        int x = Mathf.RoundToInt(position.x / tileSize);
+        int z = Mathf.RoundToInt(position.z / tileSize);
 
         return x >= 0 && x < gridSize.x && z >= 0 && z < gridSize.y;
     }
 
     bool IsObstacle(Vector3 position)
     {
-        return Physics.CheckBox(position, Vector3.one * 0.45f, Quaternion.identity, obstacleLayer);
+        Vector3 boxSize = new Vector3(0.5f, 1f, 0.5f); // Taller Y axis
+        return Physics.CheckBox(position + Vector3.up * 0.5f, boxSize, Quaternion.identity, obstacleLayer);
     }
+
 }
 
 
