@@ -1,3 +1,17 @@
+/************************************************************
+* COPYRIGHT:  2025
+* PROJECT: Puzzle Game 
+* FILE NAME: TileMover.cs
+* DESCRIPTION: Tile-based player movement. 
+*                   
+* REVISION HISTORY:
+* Date [2025/10/20] | Ava Boswell | works, don't touch.
+* ------------------------------------------------------------
+* 2025/10/15 | Ava Boswell | Created class
+*
+*
+************************************************************/
+
 using System.Collections;
 using UnityEngine;
 

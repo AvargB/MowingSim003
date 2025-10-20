@@ -1,3 +1,17 @@
+
+/************************************************************
+ * COPYRIGHT:  2025
+ * PROJECT: Puzzle Game
+ * FILE NAME: MenuController.cs
+ * DESCRIPTION: Manages UI related to the title screen. 
+ *
+ * REVISION HISTORY:
+ * Date [2025/10/20] | Ava Boswell | this partially works
+ * ------------------------------------------------------------
+ * 2025/10/15 | Ava Boswell | Created class
+ *
+ *
+ ************************************************************/
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -28,8 +42,6 @@ public class MenuController : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
+
     }
 }

@@ -1,3 +1,17 @@
+/************************************************************
+* COPYRIGHT:  2025
+* PROJECT: Puzzle Game 
+* FILE NAME: GameManager.cs
+* DESCRIPTION: Manage tiles and trigger game over. 
+*                   
+* REVISION HISTORY:
+* Date [2025/10/20] | Ava Boswell | do. not. mess. with. this. file.
+* ------------------------------------------------------------
+* 2025/10/15 | Ava Boswell | Created class
+*
+*
+************************************************************/
+
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
