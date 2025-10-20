@@ -40,7 +40,8 @@ public class TileMover : MonoBehaviour
 
                     Vector3 destination = targetPosition + inputDir * tileSize;
 
-                    if (IsWithinBounds(destination) && !IsObstacle(destination))
+                    // ✅ Check both bounds and obstacles
+                    if (IsWithinBounds(destination) && !IsBlocked(destination))
                     {
                         StartCoroutine(MoveToPosition(destination));
                     }
@@ -52,6 +53,7 @@ public class TileMover : MonoBehaviour
                 lastInputDirection = Vector3.zero;
             }
         }
+
 
     }
 
@@ -86,12 +88,17 @@ public class TileMover : MonoBehaviour
 
         return x >= 0 && x < gridSize.x && z >= 0 && z < gridSize.y;
     }
-
-    bool IsObstacle(Vector3 position)
+    
+    bool IsBlocked(Vector3 destination)
     {
-        Vector3 boxSize = new Vector3(0.5f, 1f, 0.5f); // Taller Y axis
-        return Physics.CheckBox(position + Vector3.up * 0.5f, boxSize, Quaternion.identity, obstacleLayer);
+        // Use a box check to simulate tile-size collision detection
+        float checkRadius = tileSize * 0.45f; // slightly less than full tile to avoid false positives
+        Vector3 checkCenter = destination + Vector3.up * 0.5f; // Adjust height to avoid ground collisions
+
+        return Physics.CheckBox(checkCenter, new Vector3(checkRadius, 0.5f, checkRadius), Quaternion.identity, obstacleLayer);
     }
+
+    
 
 }
 
