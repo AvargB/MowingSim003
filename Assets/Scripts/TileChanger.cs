@@ -36,19 +36,19 @@ public class TileChanger : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("Triggered by: " + other.name);
+    
         if (!hasChanged)
         {
             if (oneMaterial != null)
             {
                 planeRenderer.material = oneMaterial;
                 hasChanged = true;
+
+                GameManager.Instance.IncrementMaterialCount(1); // Count material 1
                 GameManager.Instance.CheckAllObjects();
                 return;
             }
-
-
         }
-
 
         if (hasChanged && !hasChangedTwo)
         {
@@ -56,8 +56,11 @@ public class TileChanger : MonoBehaviour
             {
                 planeRenderer.material = twoMaterial;
                 hasChangedTwo = true;
+
+                GameManager.Instance.IncrementMaterialCount(2); // Count material 2
                 GameManager.Instance.CheckAllObjects();
             }
         }
     }
+
 }
