@@ -6017,7 +6017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae207e5514cf1ca41abb925e481b2ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameOverUI
-  nextSceneName: 
+  nextSceneName: Level2
 --- !u!1 &760431207
 GameObject:
   m_ObjectHideFlags: 0
