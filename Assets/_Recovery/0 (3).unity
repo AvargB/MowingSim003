@@ -2976,8 +2976,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1680162386}
   - {fileID: 666467478}
+  - {fileID: 1680162386}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -6827,7 +6827,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 666467481}
         m_TargetAssemblyTypeName: GameOverUI, Assembly-CSharp
-        m_MethodName: RetryLevel
+        m_MethodName: NextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16718,7 +16718,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 666467481}
         m_TargetAssemblyTypeName: GameOverUI, Assembly-CSharp
-        m_MethodName: QuitGame
+        m_MethodName: NextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
